@@ -1,0 +1,72 @@
+.menu{
+    height: 100vh;
+    background-color: #8595BD;
+    color: white;
+}
+
+.btn-menu, .menu a{
+    border: none;
+    color: white; 
+}
+
+.btn-menu svg{
+    font-size: 2rem;
+}
+
+.options{
+    gap:30px;
+    margin-top:10%
+}
+
+.icon h1{
+    padding-left: 32px;
+    font-family: 'Caveat', cursive;
+}
+
+.notes{
+    font-size: 1.2rem;
+    flex-direction: column;
+    gap:10px;
+}
+
+.notes li{
+    gap:10px
+}
+
+.category{
+    gap:10px;
+}
+
+.category li, a{
+    display: flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn-tag{
+    align-items: center;
+    gap:10px;
+    color: white;
+}
+
+.menu-hidden ul{
+    width: 200px;
+}
+
+.menu-footer{
+  position:absolute; 
+  bottom:0; 
+  left:0; 
+  gap:15px;
+  align-items:center;
+}
+
+.redes{  
+    padding:0px;
+    justify-content:center;  
+    gap: 20px;
+}
+
+.icon-link{
+    gap:10px
+}

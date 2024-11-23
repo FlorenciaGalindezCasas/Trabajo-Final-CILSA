@@ -1,8 +1,13 @@
 .profile img{
     width:30px;
     height:30px
+    
 }
 .profile{
     gap:5px;
     align-items:center;
+
 }
+/* .search input{
+    width:1000px
+} */

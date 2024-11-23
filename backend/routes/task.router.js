@@ -38,6 +38,25 @@ router.put("/editartarea/:id", async (req, res) => {
   }
 });
 
+//estado de tarea
+router.put("/estadotarea/:id", async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    const { note_status } = req.body; 
+
+    if (typeof note_status !== "boolean") {
+      return res.status(400).json({ error: true, message: "note_status debe ser un valor booleano" });
+    }
+
+    const updatedTask = await editTask(taskId, { note_status }); 
+
+    res.json(updatedTask);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: true, message: "Error" });
+  }
+});
+
 //eliminar tarea
 router.delete("/eliminartarea/:id", async (req, res) => {
   try {

@@ -1,15 +1,15 @@
-import React from 'react'
-import Header from '../header/Header'
-import Card from '../card/Card'
-import "../main/Main.css"
+import React from "react";
+import Header from "../header/Header";
+import Cards from "../cards/Cards";
+import "../main/Main.css";
 
 function Main() {
   return (
-    <div>
-        <Header/>
-        <Card/>
+    <div className="main">
+      <Header />
+      <Cards />
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;

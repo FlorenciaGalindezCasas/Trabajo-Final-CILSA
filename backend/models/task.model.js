@@ -23,13 +23,13 @@ const getAll = async () => {
 
 const createTask = async (noteData) => {
   try {
-    const { note_title, note_description, note_date, tag_id } = noteData;
+    const { note_title, note_description, note_date, tag_id , note_status} = noteData;
 
     const [row] = await connection.query(
       "INSERT INTO note" +
-        "(note_title, note_description, note_date, tag_id)" +
-        "VALUES(?,?,?,?);",
-      [note_title, note_description, note_date, tag_id]
+        "(note_title, note_description, note_date, tag_id, note_status)" +
+        "VALUES(?,?,?,?,?);",
+      [note_title, note_description, note_date, tag_id, note_status]
     );
 
     const [createdTask] = await connection.query(getByIdQuery, row.insertId);

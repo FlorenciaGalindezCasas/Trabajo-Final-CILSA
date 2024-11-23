@@ -1,15 +1,15 @@
-import { useState } from "react";
 import "./App.css";
-import Home from "./components/home/Home";
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "../src/router/routes";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <>
-      <Home />
-    </>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
-}
+};
 
 export default App;
+

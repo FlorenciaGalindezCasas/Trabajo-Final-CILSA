@@ -1,15 +1,12 @@
 # Trabajo-Final-CILSA
 
-![login](![image](https://github.com/user-attachments/assets/07a20bf6-3c4d-4f20-843f-b32ea8f7a82c)
-)
+![login](login.png)
 
-![home](![image](![image](https://github.com/user-attachments/assets/6ebbec90-a2e7-45e1-8344-3fb49371d2f5)
-)
+![home](home.png)
 
 
 ## EER Diagram
-![db](![image](https://github.com/user-attachments/assets/6c849cc1-b0c4-4649-85aa-2dedf7246ddb)
-)
+![db](db.jpg)
 
 
 ## Descripción

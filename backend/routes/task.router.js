@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { getAllTasks } = require("../controllers/task.controller");
 const { createTask, editTask, deleteTask } = require("../models/task.model");
+const { requireLogin } = require("../middlewares/auth");
 
 //obtener todas las tareas
 router.get("/", getAllTasks);

@@ -10,9 +10,9 @@ const login = async (req, res) => {
     const [validatedUser] = await verifyUser(email);
 
     if (!validatedUser) {
-      return res.status(404).json({ error: "User is not registered" });
+      return res.status(404).json({ error: "Usuario no registrado" });
     } else if (!(await bcrypt.compare(password, validatedUser.password))) {
-      return res.status(404).json({ error: "Incorrect password" });
+      return res.status(404).json({ error: "Contraseña incorrecta" });
     } else {
       const token = jwt.sign({ user: validatedUser.user_id }, "token_secreto", {
         expiresIn: "1h",
@@ -22,11 +22,11 @@ const login = async (req, res) => {
       } else {
         console.error("Session undefined");
       }
-      res.json({ success: true, message: "Successful login", token });
+      res.json({ success: true, message: "Login exitoso", token });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: true, message: "Server error" });
+    res.status(500).json({ error: true, message: "Error de servidor" });
   }
 };
 
@@ -43,7 +43,7 @@ const register = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Successfully registered user",
+      message: "Registro exitoso",
       user: newUser,
     });
   } catch (error) {

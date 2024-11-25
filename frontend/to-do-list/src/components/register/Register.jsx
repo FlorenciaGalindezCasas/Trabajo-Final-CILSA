@@ -9,25 +9,38 @@ function Register() {
     email: "",
     password: "",
   });
-
+  const [errors, setErrors] = useState(""); 
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Validaciones locales
+    const { username, email, password } = registerData;
+    if (!username || !email || !password) {
+      setErrors("Todos los campos son obligatorios");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrors("Por favor, ingresa un correo válido");
+      return;
+    }
+    if (password.length < 6) {
+      setErrors("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+
+    setErrors(""); 
     try {
-      const res = await register({
-        username: registerData.username,
-        email: registerData.email,
-        password: registerData.password,
-      });
+      const res = await register({ username, email, password });
       if (res && res.success) {
         console.log("Registration successful");
-        navigate("/login"); // Redirige al login después de registrarse exitosamente
+        navigate("/login"); 
       } else {
-        console.error(res?.error || "An error occurred during registration");
+        setErrors(res?.error || "Ocurrió un error durante el registro");
       }
     } catch (error) {
-      console.error(error || "An error occurred during registration");
+      setErrors(error.message || "Ocurrió un error desconocido");
     }
   };
 
@@ -47,6 +60,7 @@ function Register() {
       </div>
       <div className="register-form">
         <form onSubmit={handleRegister}>
+          {errors && <p className="text-danger">{errors}</p>}
           <div className="mb-3">
             <label htmlFor="inputUsername" className="form-label">
               Nombre de usuario
@@ -64,7 +78,7 @@ function Register() {
           </div>
           <div className="mb-3">
             <label htmlFor="inputEmail" className="form-label">
-              Email 
+              Email
             </label>
             <input
               type="email"
@@ -98,7 +112,9 @@ function Register() {
             </button>
           </div>
         </form>
-        <div className="ingreso"><a href="/login">Ya tengo un usuario! Ingresar</a></div>
+        <div className="ingreso">
+          <a href="/login">Ya tengo un usuario! Ingresar</a>
+        </div>
       </div>
     </div>
   );

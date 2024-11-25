@@ -8,25 +8,30 @@ function Login() {
     email: "",
     password: "",
   });
-
+  const [errors, setErrors] = useState(""); 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setErrors(""); 
     try {
       const res = await login({
         email: loginData.email,
         password: loginData.password,
       });
       if (res && res.success) {
-        console.log("Login successful");
+        console.log("Login exitoso");
         localStorage.setItem("accessToken", res.token);
         navigate("/home");
       } else {
-        console.error(res?.error || "An error occurred during login");
+        setErrors(
+          res?.error || "Error desconocido. Por favor, inténtalo de nuevo."
+        );
       }
     } catch (error) {
-      console.error(error || "An error occurred during login");
+      setErrors(
+        error.message || "Error desconocido. Por favor, inténtalo de nuevo."
+      );
     }
   };
 
@@ -48,7 +53,7 @@ function Login() {
         <form onSubmit={handleLogin}>
           <div className="mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label">
-              Email 
+              Email
             </label>
             <input
               type="email"
@@ -74,13 +79,16 @@ function Login() {
               onChange={handleChange}
             />
           </div>
+          {errors && <p className="text-danger">{errors}</p>}{" "}
           <div className="btn-login d-flex">
-            <button type="submit" className="btn btn-outline-success ">
+            <button type="submit" className="btn btn-outline-success">
               Ingresa
             </button>
           </div>
         </form>
-        <div className="registro"><a href="/register">No tengo cuenta! Crear</a></div>
+        <div className="registro">
+          <a href="/register">No tengo cuenta! Crear</a>
+        </div>
       </div>
     </div>
   );

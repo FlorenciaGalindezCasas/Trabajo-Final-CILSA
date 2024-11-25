@@ -44,9 +44,9 @@ List of technologies used in the project:
 ├── react@18.2.0<br/>
 └── vite@5.0.11<br/>
 
-## Commands
+## Comandos
 
-Commands to run the application locally:
+Comandos para correr la aplicación localmente:
 
 * FrontEnd: npm run dev.
 

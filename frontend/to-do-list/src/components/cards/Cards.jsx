@@ -30,12 +30,13 @@ function Cards() {
     setShowModal(!showModal);
   };
 
-  const handleCreateTask = async (e) => {
-    e.preventDefault();
-    try {
-      const newNote = await createTask(newNoteData);
-      setNotes((prevNotes) => [...prevNotes, newNote]);
-      console.log("New Note Response:", newNote);
+const handleCreateTask = async (e) => {
+  e.preventDefault();
+  try {
+    const newTask = await createTask(newNoteData);
+    if (newTask) {
+      const updatedNotes = await fetchTasks();
+      setNotes(updatedNotes);
       setNewNoteData({
         note_title: "",
         note_description: "",
@@ -43,10 +44,13 @@ function Cards() {
         tag_id: 0,
       });
       toggleModal();
-    } catch (error) {
-      console.error("Error creating new note:", error);
+    } else {
+      console.error("Error al agregar la tarea");
     }
-  };
+  } catch (error) {
+    console.error("Error creando la tarea:", error);
+  }
+};
 
   const handleEditModalClose = () => {
     setShowModal(false);

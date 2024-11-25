@@ -25,7 +25,6 @@ function Card({ note, onDelete, onEdit, onUpdateStatus }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     const convertedValue = name === "tag_id" ? Number(value) : value;
 
     if (name === "tag_id") {
@@ -54,7 +53,7 @@ function Card({ note, onDelete, onEdit, onUpdateStatus }) {
   };
 
   const handleStatusToggle = () => {
-    onUpdateStatus(note.note_id, !note.completed); // Cambia el estado de completado
+    onUpdateStatus(note.note_id, !note.completed); 
   };
 
   useEffect(() => {
@@ -62,7 +61,7 @@ function Card({ note, onDelete, onEdit, onUpdateStatus }) {
   }, [note]);
 
   return (
-    <div className="card">
+    <div className={`card ${note.completed ? 'completed' : ''}`}>
       <div className="card-body">
         {isEditing ? (
           <>

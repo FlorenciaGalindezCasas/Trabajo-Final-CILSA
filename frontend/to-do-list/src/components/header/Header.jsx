@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../header/Header.css";
 import { logout } from "../../store/actions/userActions";
 import { useNavigate } from "react-router-dom";
@@ -6,9 +6,25 @@ import { IoSearchOutline } from "react-icons/io5";
 
 function Header() {
   const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  //Verificar si el usuario está autenticado
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    setIsAuthenticated(!!token); 
+  }, []);
+
+  //logout
   const handleLogout = () => {
-    logout();
+    logout(); 
+    localStorage.removeItem("accessToken");
+    setIsAuthenticated(false);
     navigate("/");
+  };
+
+  //login
+  const handleLogin = () => {
+    navigate("/login"); 
   };
 
   return (
@@ -26,14 +42,22 @@ function Header() {
           />
         </form>
         <div className="profile d-flex">
-          <img
-            src="./public/assets/img/personProfile.ico"
-            className="rounded-circle"
-            alt="Avatar"
-          />
-          <button className="btn btn-outline-danger" onClick={handleLogout}>
-            Logout
-          </button>
+          {isAuthenticated ? (
+            <>
+              <img
+                src="./src/assets/image.png"
+                className="rounded-circle"
+                alt="Avatar"
+              />
+              <button className="btn btn-outline-danger" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <button className="btn btn-outline-primary" onClick={handleLogin}>
+              Login
+            </button>
+          )}
         </div>
       </div>
     </nav>

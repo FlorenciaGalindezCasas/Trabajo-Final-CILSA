@@ -48,3 +48,7 @@
     gap:5px;
     color:red
 }
+
+.card.completed {
+  opacity: 0.5; 
+}

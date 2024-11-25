@@ -40,7 +40,7 @@ function ModalcreateTask({
                 <label>Título</label>
                 <input
                   type="text"
-                  placeholder="Title"
+                  placeholder="Titulo"
                   value={newNoteData.note_title}
                   onChange={(e) =>
                     setNewNoteData({
@@ -53,7 +53,7 @@ function ModalcreateTask({
               <div className="d-flex flex-column mb-3">
                 <label className="form-label">Descripción</label>
                 <textarea
-                  placeholder="Description"
+                  placeholder="Descripcion"
                   value={newNoteData.note_description}
                   onChange={(e) =>
                     setNewNoteData({

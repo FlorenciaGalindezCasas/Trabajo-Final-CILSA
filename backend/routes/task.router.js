@@ -7,7 +7,7 @@ const { createTask, editTask, deleteTask } = require("../models/task.model");
 router.get("/", getAllTasks);
 
 //agregar nueva tarea
-router.post("/nuevatarea", async (req, res) => {
+router.post("/nuevatarea", requireLogin, async (req, res) => {
   try {
     const taskData = req.body;
     console.log("Nota: ", taskData);
@@ -23,7 +23,7 @@ router.post("/nuevatarea", async (req, res) => {
 });
 
 //editar tarea segun id
-router.put("/editartarea/:id", async (req, res) => {
+router.put("/editartarea/:id", requireLogin, async (req, res) => {
   try {
     const taskId = req.params.id;
     console.log("ID: ", taskId);
@@ -39,16 +39,21 @@ router.put("/editartarea/:id", async (req, res) => {
 });
 
 //estado de tarea
-router.put("/estadotarea/:id", async (req, res) => {
+router.put("/estadotarea/:id", requireLogin, async (req, res) => {
   try {
     const taskId = req.params.id;
-    const { note_status } = req.body; 
+    const { note_status } = req.body;
 
     if (typeof note_status !== "boolean") {
-      return res.status(400).json({ error: true, message: "note_status debe ser un valor booleano" });
+      return res
+        .status(400)
+        .json({
+          error: true,
+          message: "note_status debe ser un valor booleano",
+        });
     }
 
-    const updatedTask = await editTask(taskId, { note_status }); 
+    const updatedTask = await editTask(taskId, { note_status });
 
     res.json(updatedTask);
   } catch (error) {
@@ -58,7 +63,7 @@ router.put("/estadotarea/:id", async (req, res) => {
 });
 
 //eliminar tarea
-router.delete("/eliminartarea/:id", async (req, res) => {
+router.delete("/eliminartarea/:id", requireLogin, async (req, res) => {
   try {
     const taskId = req.params.id;
 

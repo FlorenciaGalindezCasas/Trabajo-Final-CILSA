@@ -6,7 +6,9 @@ function Home() {
   return (
     <div className="d-flex">
       <Menu />
-      <Main />
+      <div className="main">
+        <Main />
+      </div>
     </div>
   );
 }

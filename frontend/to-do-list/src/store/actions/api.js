@@ -167,6 +167,28 @@ const createTag = async (tagData) => {
   }
 };
 
+const deleteTag = async (tagId) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log(token);
+
+    if (!token) {
+      console.error("No hay token disponible.");
+      return;
+    }
+    const res = await fetch(`${apiUrl}/tag/deletetag/${tagId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.error("Error delete tag:", error);
+  }
+};
+
 export {
   fetchTasks,
   createTask,
@@ -175,4 +197,5 @@ export {
   deleteTask,
   fetchTags,
   createTag,
+  deleteTag
 };

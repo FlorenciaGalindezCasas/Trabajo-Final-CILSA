@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ModalcreateTask.css";
 
 function ModalcreateTask({
@@ -9,6 +9,16 @@ function ModalcreateTask({
   showModal,
   availableTags,
 }) {
+  useEffect(() => {
+    if (!showModal) {
+      const modal = document.getElementById("createTaskModal");
+      if (modal) {
+        const modalInstance = new window.bootstrap.Modal(modal);
+        modalInstance.hide();
+      }
+    }
+  }, [showModal]);
+
   return (
     <div
       className={`modal fade ${showModal ? "show" : ""}`}
@@ -16,6 +26,7 @@ function ModalcreateTask({
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden={!showModal}
+      style={{ display: showModal ? "block" : "none" }} 
     >
       <div className="modal-dialog">
         <div className="modal-content">
@@ -26,7 +37,6 @@ function ModalcreateTask({
             <button
               type="button"
               className="btn-close"
-              data-bs-dismiss="modal"
               aria-label="Close"
               onClick={onClose}
             ></button>
@@ -117,8 +127,7 @@ function ModalcreateTask({
             <button
               type="button"
               className="btn btn-danger"
-              data-bs-dismiss="modal"
-              onClick={onClose}
+              onClick={onClose} 
             >
               Cancelar
             </button>

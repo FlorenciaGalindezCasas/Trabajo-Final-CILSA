@@ -8,6 +8,8 @@
     align-items:center;
 
 }
-/* .search input{
-    width:1000px
-} */
+
+.logo h1{
+    padding-left: 32px;
+    font-family: 'Caveat', cursive;
+}

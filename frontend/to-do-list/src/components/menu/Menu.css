@@ -1,72 +1,100 @@
-.menu{
-    min-height: 100vh;
-    background-color: #8595BD;
-    color: white;
-}
-
-.btn-menu, .menu a{
-    border: none;
-    color: white; 
-}
-
-.btn-menu svg{
-    font-size: 2rem;
-}
-
-.options{
-    gap:30px;
-    margin-top:10%
+.menu-container {
+  position: relative;
+  display: flex;
+  height: 100vh;
 }
 
 .icon h1{
-    padding-left: 32px;
-    font-family: 'Caveat', cursive;
+  margin-bottom: 2rem;
+  padding-left: 32px;
+  font-family: 'Caveat', cursive;
 }
 
-.notes{
-    font-size: 1.2rem;
-    flex-direction: column;
-    gap:10px;
+.menu {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #8595BD;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000; 
 }
 
-.notes li{
-    gap:10px
+.menu-hidden {
+  transform: translateX(-100%);
+}
+
+.menu-visible {
+  transform: translateX(0);
 }
 
 .category{
-    gap:10px;
+  padding:0;
+  display:flex;
+  flex-direction: column;
+  gap:7px
 }
 
-.category li, a{
+.menu-overlay {
+  display: flex;
+  flex-direction: column;
+  padding: 20px; 
+  
+}
+
+.btn-menu {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  background: #8595BD;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  z-index: 1100; 
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-menu svg {
+  transition: transform 0.3s ease;
+}
+
+.category li{
     display: flex;
     align-items:center;
+    justify-content: space-around;
     gap:10px;
 }
 
 .btn-tag{
     align-items: center;
-    gap:10px;
-    color: white;
+    gap: 10px
 }
 
-.menu-hidden ul{
-    width: 200px;
-}
+@media (max-width: 425px) {
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #8595BD; 
+    z-index: 1000;
+  }
 
-.menu-footer{
-  position:absolute; 
-  bottom:0; 
-  left:0; 
-  gap:15px;
-  align-items:center;
-}
+  .menu {
+    width: 100%;
+  }
 
-.redes{  
-    padding:0px;
-    justify-content:center;  
-    gap: 20px;
-}
-
-.icon-link{
-    gap:10px
+  .btn-menu {
+  
+    background-color: #8595BD;
+  }
 }

@@ -1,6 +1,6 @@
 .register{
     background-color: #8595BD;
-    height:100vh;
+    min-height:100vh;
     width: 100%;
     align-items:center;
     justify-content:center;

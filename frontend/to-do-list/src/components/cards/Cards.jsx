@@ -176,27 +176,27 @@ const handleCreateTask = async (e) => {
             </li>
           </ul>
         </div>
-        <div>
-          <button
-            className="btn-note d-flex"
-            onClick={toggleModal}
-            data-bs-toggle="modal"
-            data-bs-target="#createTaskModal"
-          >
-            <GoPlus />
-            Crear nueva tarea
-          </button>
-        </div>
-        <ModalcreateTask
-          onClose={toggleModal}
-          handlecreateTask={handleCreateTask}
-          newNoteData={newNoteData}
-          setNewNoteData={setNewNoteData}
-          showModal={showModal}
-          setShowModal={setShowModal}
-          availableTags={tagsFilter}
-        />
       </div>
+      <div className="d-flex new">
+        <button
+          className="btn-note d-flex"
+          onClick={toggleModal}
+          data-bs-toggle="modal"
+          data-bs-target="#createTaskModal"
+        >
+          <GoPlus />
+          Crear nueva tarea
+        </button>
+      </div>
+      <ModalcreateTask
+        onClose={toggleModal}
+        handlecreateTask={handleCreateTask}
+        newNoteData={newNoteData}
+        setNewNoteData={setNewNoteData}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        availableTags={tagsFilter}
+      />
       <div className="d-flex cards">
         {filteredAndCompletedNotes.length > 0 ? (
           filteredAndCompletedNotes.map((note) => (

@@ -30,17 +30,9 @@ function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <form className="d-flex search" role="search">
-          <button className="btn" type="submit">
-            <IoSearchOutline />
-          </button>
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Buscar"
-            aria-label="Search"
-          />
-        </form>
+        <div className="logo">
+          <h1>TAREAS</h1>
+        </div>
         <div className="profile d-flex">
           {isAuthenticated ? (
             <>
